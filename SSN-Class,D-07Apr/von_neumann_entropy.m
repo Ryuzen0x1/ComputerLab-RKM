@@ -1,4 +1,6 @@
 clear;
+close all;
+
 X = [0 1;1 0];
 Z = [1 0;0 -1];
 
@@ -11,6 +13,7 @@ z1 = V_2(:, 1);
 z2 = D_2(:, 1);
 
 psi = kron(z1, z2) + kron(z2, z1);
+psi = psi / norm(psi);
 psi_dag = psi';
 D = psi*psi_dag
 
@@ -32,3 +35,8 @@ end
 disp('Reduce Matrix:');
 disp(trace_matrix);
 
+eigvals = eig(trace_matrix);
+entropy_e = -trace(trace_matrix .* logm(trace_matrix));
+entropy_2 = -trace(trace_matrix .* (logm(trace_matrix)*log2(e))); % eps to avoid log(0)
+disp(['Von Neumann Entropy base-e: ', num2str(entropy_e)]);
+disp(['Von Neumann Entropy base-2: ', num2str(entropy_2)]);
