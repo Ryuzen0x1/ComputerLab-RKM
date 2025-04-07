@@ -30,3 +30,8 @@ disp('Initial density matrix rho(0):');
 disp(rho0);
 disp('Trace Matrix:');
 disp(trace_matrix);
+
+eigvals = eig(rho0);
+entropy = -sum(eigvals .* log2(eigvals + eps)); % eps to avoid log(0)
+disp(['Von Neumann Entropy: ', num2str(entropy)]);
+
