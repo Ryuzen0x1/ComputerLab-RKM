@@ -1,0 +1,23 @@
+% O1 and O3 are given matrices. 
+clear;
+
+O1=[0,1;1,0];
+[v1,e1]=eig(O1);
+
+printf("Eigen value of O1\n")
+disp(diag(e1))
+
+printf("Eigen vector of O1\n")
+disp(v1)
+
+O3=0.5*[1,0;0,-1]; 
+[v3,e3]=eig(O3);
+
+printf("Eigen value of O3\n")
+disp(diag(e3))
+
+printf("Eigen vector of O3\n")
+disp(v3)
+
+c=(O1*O3)-(O3*O1);
+printf("Commutation of O1 and O3\n%d",  c)
