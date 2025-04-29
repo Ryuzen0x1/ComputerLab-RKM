@@ -21,5 +21,6 @@ for i=1:n
   positive_evals=evals(evals>10^(-5));
   S(i)=-sum(positive_evals.*log2(positive_evals));
   % this form is same like von ,na samjhe to boolna
+  % ps: samjha
 end
 plot(x,S)
