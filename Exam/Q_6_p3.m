@@ -11,10 +11,9 @@ phi_vals = [0, pi/2];
 
 for theta = theta_vals
     for phi = phi_vals
-        % Compute Sn
+
         Sn = sin(theta)*cos(phi)*sigma_x + sin(theta)*sin(phi)*sigma_y + cos(theta)*sigma_z;
 
-        % Compute eigenvalues and eigenvectors
         [V, D] = eig(Sn);
 
         % fprintf('theta = %.2f, phi = %.2f\n', theta, phi);
@@ -22,8 +21,8 @@ for theta = theta_vals
         disp(diag(D));
 
         for i = 1:2
-            psi = V(:, i);  % Eigenvector
-            exp_sigma_x = psi' * sigma_x * psi;  % Expectation value
+            psi = V(:, i);
+            exp_sigma_x = psi' * sigma_x * psi;
             % fprintf('Eigenvector %d:\n', i);
             % disp(psi);
             fprintf('Expectation value <sigma_x> = %.4f + %.4fi\n', real(exp_sigma_x), imag(exp_sigma_x));
